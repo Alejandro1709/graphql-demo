@@ -8,7 +8,6 @@ const app = express();
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
   type Query {
-    message: String
     product(id: Int!): Product
     products: [Product]
   }
@@ -29,7 +28,6 @@ const schema = buildSchema(`
 
 // The root provides a resolver function for each API endpoint
 const root = {
-  message: () => 'Hello world!',
   products: () => products,
   product: ({ id }) => products.find((product) => product.id === id),
   addProduct: ({ name, price, stock }) => {
